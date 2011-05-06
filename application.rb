@@ -16,7 +16,7 @@ end
 
 get '/' do
   url = Muzak.last.url || DEFAULT_ROOM
-  redirect to(Muzak.last.url)
+  redirect to(url)
 end
 
 post '/' do
