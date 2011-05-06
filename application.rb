@@ -22,4 +22,3 @@ post '/' do
   url = Muzak.create({:url => params[:url] })
   url.save
 end
-
