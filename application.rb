@@ -3,6 +3,7 @@ require 'mongo_mapper'
 require 'sinatra'
 
 configure do
+  APP_ENVIRONMENT = Sinatra::Application.environment
   MongoMapper.config = {APP_ENVIRONMENT => {'uri' => ENV['MONGOHQ_URL']}}
   MongoMapper.connect(APP_ENVIRONMENT)
   DEFAULT_ROOM = 'http://muzak.heroku.com/rooms/bd3b67'
