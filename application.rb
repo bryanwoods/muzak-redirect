@@ -11,6 +11,7 @@ end
 class Muzak
   include MongoMapper::Document
   key :url , String, :required => true
+  timestamps!
 end
 
 get '/' do
@@ -18,9 +19,8 @@ get '/' do
 end
 
 post '/' do
-  puts params[:url]
-  url = Muzak.create({:url => params[:url] })
-  if url.save
-    response.headers['Location'] = Muzak.last.url
+  url = Muzak.new({:url => params[:url] })
+  if url.save!
+    response.headers['Location'] = Muzak.sort(:created_at).last.url
   end
 end
