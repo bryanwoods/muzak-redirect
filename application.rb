@@ -20,4 +20,5 @@ end
 post '/' do
   url = Muzak.create({:url => params[:url] })
   url.save
+  header 'Location' => Muzak.last.url
 end
