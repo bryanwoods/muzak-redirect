@@ -18,7 +18,9 @@ get '/' do
 end
 
 post '/' do
+  puts params[:url]
   url = Muzak.create({:url => params[:url] })
-  url.save
-  response.headers['Location'] = Muzak.last.url
+  if url.save
+    response.headers['Location'] = Muzak.last.url
+  end
 end
