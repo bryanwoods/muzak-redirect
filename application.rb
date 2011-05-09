@@ -15,7 +15,7 @@ class Muzak
 end
 
 get '/' do
-  redirect to(Muzak.last.url)
+  redirect to(Muzak.sort(:created_at).last.url)
 end
 
 post '/' do
